@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mediasite Downloader
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Download videos from mediasite urls
 // @author       Natasha England-ELbro
 // @match        https://*/Mediasite/Play/*
@@ -61,8 +61,16 @@
     });
   }
 
-  const API_TARGET =
-    "https://mediasite.bris.ac.uk/Mediasite/PlayerService/PlayerService.svc/json/GetPlayerOptions";
+  function calcApiTarget() {
+    const url_segs = document.URL.split("/");
+    console.info(JSON.stringify(url_segs))
+    url_segs.pop()
+    url_segs.pop()
+    return (
+      url_segs.join("/") + "/PlayerService/PlayerService.svc/json/GetPlayerOptions"
+    );
+  }
+  const API_TARGET = calcApiTarget();
 
   function doDownload() {
     const req = new XMLHttpRequest();
