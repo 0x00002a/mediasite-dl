@@ -1,11 +1,13 @@
 // ==UserScript==
-// @name         blackboard-dl
+// @name         Mediasite Downloader
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
+// @description  Download videos from mediasite urls
 // @author       Natasha England-ELbro
-// @match        https://mediasite.bris.ac.uk/Mediasite/Play/*
+// @match        http://*/Mediasite/Play/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @homepage     https://github.com/0x00002a/mediasite-dl
+// @supportURL   https://github.com/0x00002a/mediasite-dl/issues
 // @grant        GM_download
 // ==/UserScript==
 
@@ -78,7 +80,7 @@
     dl_btn.onclick = onclick;
     dl_btn.textContent = "Download";
 
-    dl_btn.style = "color: white;";
+    dl_btn.style = "color: white;margin-right: 30px;";
     to.prepend(dl_btn)
   }
 })();
