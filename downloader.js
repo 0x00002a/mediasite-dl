@@ -42,7 +42,14 @@
     );
 
     console.debug("url: " + vid_url);
-    GM_download({ url: vid_url, name: calcVideoId() + ".mp4", saveAs: true });
+    GM_download({
+      url: vid_url,
+      name: calcVideoId() + ".mp4",
+      saveAs: true,
+      onerror: (e) => {
+        console.error(e);
+      },
+    });
   }
 
   const API_TARGET =
@@ -59,29 +66,16 @@
     req.send(JSON.stringify(buildVidRequestJson()));
   }
 
-  const dl_btn_observer = new window.MutationObserver((m, o) =>
-    doAddDownloadBtn()
-  );
-
-  function doAddDownloadBtn() {
-    addDlBtn(doDownload);
-  }
-
   function addDlBtn(onclick) {
-    let btn = document.createElement("button");
-    btn.onclick = onclick;
-    btn.textContent = "Download";
-    dl_btn_observer.observe(btn, {
-      subtree: true,
-      attributes: false,
-      childList: true,
-      characterData: false,
-    });
-    btn.style = "color: white;";
+    var dl_btn = document.createElement("button");
+    dl_btn.onclick = onclick;
+    dl_btn.textContent = "Download";
+
+    dl_btn.style = "color: white;";
     document
       .querySelector("div.controlBar")
       .querySelector("div.generalControls")
-      .prepend(btn);
+      .prepend(dl_btn);
   }
 
   
