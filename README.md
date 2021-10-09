@@ -24,7 +24,7 @@ Note: If it doesn't offer you a download dialog, go to:
 Files in this repo 
 -------------------
 
-- `downloader.py`: Python script which works but requires some manual extraction of cookies from the browser 
+- `download.py`: Python script which works but requires some manual extraction of cookies from the browser 
 - `downloader.js`: Tapermonkey script which adds a handy "download" button to the controls of the mediasite player which downloads the video
 
 
