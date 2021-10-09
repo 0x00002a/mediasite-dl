@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @description  Download videos from mediasite urls
-// @author       Natasha England-ELbro
+// @author       Natasha England-Elbro
 // @match        https://*/Mediasite/Play/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @homepage     https://github.com/0x00002a/mediasite-dl
