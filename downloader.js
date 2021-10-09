@@ -6,7 +6,6 @@
 // @author       Natasha England-ELbro
 // @match        https://mediasite.bris.ac.uk/Mediasite/Play/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
-// @require https://cdn.jsdelivr.net/gh/CoeJoder/waitForKeyElements.js@v1.2/waitForKeyElements.js
 // @grant        GM_download
 // ==/UserScript==
 
@@ -14,8 +13,16 @@
   "use strict";
 
   // Your code here...
-  waitForKeyElements("#MediaElement", (n) => addDlBtn(doDownload));
+  function waitForLoad(query, callback) {
+    const el = document.querySelector(query);
+    if (el === null) {
+      setTimeout(() => waitForLoad(query, callback), 100);
+    } else {
+      callback(el);
+    }
+  }
 
+  waitForLoad("div.controlBar > div.generalControls", (n) => addDlBtn(doDownload, n));
 
   function cleanVidAPIUrl(url) {
     return url.replace("/manifest(format=m3u8-aapl-isoff,segmentLength=6)", "");
@@ -66,17 +73,12 @@
     req.send(JSON.stringify(buildVidRequestJson()));
   }
 
-  function addDlBtn(onclick) {
+  function addDlBtn(onclick, to) {
     var dl_btn = document.createElement("button");
     dl_btn.onclick = onclick;
     dl_btn.textContent = "Download";
 
     dl_btn.style = "color: white;";
-    document
-      .querySelector("div.controlBar")
-      .querySelector("div.generalControls")
-      .prepend(dl_btn);
+    to.prepend(dl_btn)
   }
-
-  
 })();
