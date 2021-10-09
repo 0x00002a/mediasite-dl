@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Download videos from mediasite urls
 // @author       Natasha England-ELbro
-// @match        http://*/Mediasite/Play/*
+// @match        https://*/Mediasite/Play/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @homepage     https://github.com/0x00002a/mediasite-dl
 // @supportURL   https://github.com/0x00002a/mediasite-dl/issues
