@@ -20,6 +20,12 @@ Note: If it doesn't offer you a download dialog, go to:
 2. config mode -> advanced 
 3. Downloads -> download mode -> browser api
 
+### Auto updating 
+
+Note this script \*should\* automatically update itself when a new version is pushed. I say should because it isn't really 
+tested yet and due to github caching it can sometimes take a while. This does of course mean you are trusting me not to push
+malicious code. If you don't like that, remove downloadUrl and updateUrl from the script when you install it.
+
 
 License 
 ---------

@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name         Mediasite Downloader
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
+// @updateURL    https://raw.githubusercontent.com/0x00002a/mediasite-dl/main/downloader.js
+// @downloadURL  https://raw.githubusercontent.com/0x00002a/mediasite-dl/main/downloader.js
 // @description  Download videos from mediasite urls
 // @author       Natasha England-Elbro
 // @match        https://*/Mediasite/Play/*
