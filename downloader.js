@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mediasite Downloader
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Download videos from mediasite urls
 // @author       Natasha England-Elbro
 // @match        https://*/Mediasite/Play/*
@@ -33,6 +33,9 @@
   function calcVideoId() {
     return document.URL.split("/").pop().split("?")[0];
   }
+  function getVidName() {
+    return document.title.length > 0 ? document.title : calcVideoId();
+  }
 
   function buildVidRequestJson() {
     return {
@@ -53,7 +56,7 @@
     console.debug("url: " + vid_url);
     GM_download({
       url: vid_url,
-      name: calcVideoId() + ".mp4",
+      name: getVidName() + ".mp4",
       saveAs: true,
       onerror: (e) => {
         console.error(e);
