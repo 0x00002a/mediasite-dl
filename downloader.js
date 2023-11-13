@@ -36,7 +36,7 @@
     return document.URL.split("/").pop().split("?")[0];
   }
   function getVidName() {
-    return document.title.length > 0 ? document.title : calcVideoId();
+    return (document.title.length > 0 ? document.title : calcVideoId()).replaceAll("/", "-").replaceAll(" ", "_");
   }
 
   function buildVidRequestJson() {
