@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mediasite Downloader
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @updateURL    https://raw.githubusercontent.com/0x00002a/mediasite-dl/main/downloader.js
 // @downloadURL  https://raw.githubusercontent.com/0x00002a/mediasite-dl/main/downloader.js
 // @description  Download videos from mediasite urls
@@ -26,7 +26,7 @@
     }
   }
 
-  waitForLoad("div.controlBar > div.generalControls", (n) => addDlBtn(doDownload, n));
+  waitForLoad("div.vjs-control-bar", (n) => addDlBtn(doDownload, n));
 
   function cleanVidAPIUrl(url) {
     return url.replace("/manifest(format=m3u8-aapl-isoff,segmentLength=6)", "");
