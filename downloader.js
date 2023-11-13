@@ -51,9 +51,18 @@
   }
 
   function handleVidAPIResp(resp) {
-    const vid_url = cleanVidAPIUrl(
-      resp.d.Presentation.Streams[0].VideoUrls[1].Location
-    );
+    const streams = resp.d.Presentation.Streams
+    const videoUrls = streams.flatMap(s => {
+      return s.VideoUrls.filter(u => u.MimeType == "video/mp4")
+    })
+    if (videoUrls.length > 1) {
+      console.warn("multiple valid video streams detected, currently we only pick the first")
+    }
+    if (videoUrls.length == 0) {
+      console.error("no valid video streams detected")
+      return;
+    }
+    const vid_url = cleanVidAPIUrl(videoUrls[0].Location);
 
     console.debug("url: " + vid_url);
     GM_download({
